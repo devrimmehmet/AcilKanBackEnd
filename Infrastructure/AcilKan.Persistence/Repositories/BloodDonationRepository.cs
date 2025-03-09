@@ -47,7 +47,7 @@ namespace AcilKan.Persistence.Repositories
         }
 
 
-        public async Task<DateOnly?> GetLastDonationDateByUserIdAsync(int userId)
+        public async Task<DateOnly?> GetLastCompletedDonationDateByUserIdAsync(int userId)
         {
             var values = await _context.BloodDonations
                 .Where(x => x.DonorId == userId)
