@@ -36,11 +36,11 @@ namespace AcilKan.Persistence.Repositories
         }
 
         
-        public async Task<int> GetTotalDonationCountByUserIdAsync(int userId) 
+        public async Task<int> GetCompletedDonationCountByUserIdAsync(int userId) 
         {
             var values = await _context.BloodDonations
                 .Include(x => x.BloodRequest)
-                .Where(x => x.DonorId == userId)
+                .Where(x => x.DonorId == userId && x.Status==Domain.Enums.BloodDonationStatus.ApprovedByRequester)
                 .CountAsync();
 
             return values;
